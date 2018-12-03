@@ -1,10 +1,10 @@
-import { AlarmsysteemPage } from './app.po';
+import { AlarmsysteemClientPage } from './app.po';
 
-describe('alarmsysteem App', function() {
-  let page: AlarmsysteemPage;
+describe('alarmsysteem-client App', function() {
+  let page: AlarmsysteemClientPage;
 
   beforeEach(() => {
-    page = new AlarmsysteemPage();
+    page = new AlarmsysteemClientPage();
   });
 
   it('should display message saying app works', () => {

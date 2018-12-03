@@ -1,6 +1,6 @@
 import { browser, element, by } from 'protractor';
 
-export class AlarmsysteemPage {
+export class AlarmsysteemClientPage {
   navigateTo() {
     return browser.get('/');
   }
