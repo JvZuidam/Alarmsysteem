@@ -17,7 +17,7 @@ app.listen(port, () => {
     console.log('Running on port ' + port);
 });
 
-mongoose.connect('mongodb+srv://Administrator:admin1@alarmsysteem-sugph.mongodb.net/test?retryWrites=true',
+mongoose.connect('mongodb+srv://Administrator:admin1@alarmsysteem-sugph.mongodb.net/alarmsystem?retryWrites=true',
     {useNewUrlParser: true})
     .then(() => {
         console.log("MongoDB Cloud connected")
