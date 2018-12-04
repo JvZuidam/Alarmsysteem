@@ -44,6 +44,6 @@ const CameraSchema = new Schema({
     alarm: [AlarmSchema],
 });
 
-const Camera = mongoose.model('thread', CameraSchema);
+const Camera = mongoose.model('camera', CameraSchema);
 
 module.exports = Camera;
