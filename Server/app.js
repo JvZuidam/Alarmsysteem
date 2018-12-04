@@ -1,18 +1,19 @@
 const express = require('express');
 const app = express();
+const port = process.env.PORT || 3000;
+const db = require("./dbCon");
 
-app.listen(process.env.PORT || 5000, () => {
-    if(process.env.PORT !== undefined){
-        console.log('Server gestart op poort '+process.env.PORT);
-    } else {
-        console.log('Server gestart op poort 5000');
-    }
+app.use("/user", require("./routes/user"));
+app.use("/camera", require("./routes/camera"));
+app.use("/alarm", require("./routes/alarm"));
+
+app.get("*", (request, result) => {
+    result.status(404);
+    result.json("Unknown route");
 });
 
-app.get('*', (req, res) => {
-    res.status(200).send({
-        message: 'Application is running'
-    }).end();
-})
+app.listen(port, () => {
+    console.log('Running on port ' + port);
+});
 
 module.exports = app;
