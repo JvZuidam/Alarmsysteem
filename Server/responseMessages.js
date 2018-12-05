@@ -15,10 +15,10 @@ function ErrorCode409DuplicateUser(result) {
         datetime: moment().format()})
 }
 
-function ErrorCode409DuplicateThread(result) {
+function ErrorCode409DuplicateCamera(result) {
     result.status(409).json({
         code: 409,
-        message: "Conflict, Thread already exists",
+        message: "Conflict, Camera already exists",
         datetime: moment().format()})
 }
 
@@ -62,26 +62,10 @@ function SuccessCode200GetAll(result, docs) {
     });
 }
 
-function SuccessCode200UpdateThread(result, title, content) {
+function SuccessCode200UpdateCamera(result, cameraName, location) {
     result.status(200).json({
         code: 200,
-        message: {title: title, content: content,},
-        datetime: moment().format()
-    });
-}
-
-function SuccessCode200UpdateVote(result, title, username, voteType) {
-    result.status(200).json({
-        code: 200,
-        message: {title: title, user: username, voteType: voteType},
-        datetime: moment().format()
-    });
-}
-
-function SuccessCode200UpdateCommentVote(result, commentId, username, voteType) {
-    result.status(200).json({
-        code: 200,
-        message: {id: commentId, user: username, voteType: voteType},
+        message: {cameraName: cameraName, location: location,},
         datetime: moment().format()
     });
 }
@@ -94,43 +78,17 @@ function SuccessCode201User(result, username, password) {
     });
 }
 
-function SuccessCode201Thread(result, title, content, creatorUser) {
+function SuccessCode201Camera(result, cameraName, location) {
     result.status(201).json({
         code: 201,
-        message: {title: title, content: content, creator: creatorUser,},
-        datetime: moment().format()
-    });
-}
-
-function SuccessCode201Comment(result, content, creatorUser) {
-    result.status(201).json({
-        code: 201,
-        message: {content: content, creator: creatorUser,},
+        message: {cameraName: cameraName, location: location,},
         datetime: moment().format()});
 }
 
-function SuccessCode201Vote(result, title, username, voteType) {
+function SuccessCode201Alarm(result, alarmName, cameraName, alarmType, alarmLevel) {
     result.status(201).json({
         code: 201,
-        message: {title: title, name: username, voteType: voteType ,},
-        datetime: moment().format()
-    });
-}
-
-function SuccessCode201CommentVote(result, commentId, username, voteType) {
-    result.status(201).json({
-        code: 201,
-        message: {id: commentId, name: username, voteType: voteType ,},
-        datetime: moment().format()
-    });
-}
-
-
-
-function SuccessCode201Users(result, firstUser, secondUser) {
-    result.status(201).json({
-        code: 201,
-        message: {firstUser: firstUser, secondUser: secondUser,},
+        message: {cameraName: cameraName, alarmName: alarmName, alarmType: alarmType, alarmLevel: alarmLevel ,},
         datetime: moment().format()
     });
 }
@@ -141,21 +99,16 @@ function SuccessCode204(result) {
 
 module.exports = {
     ErrorCode401,
-    ErrorCode409DuplicateThread,
     ErrorCode409DuplicateUser,
+    ErrorCode409DuplicateCamera,
     ErrorCode412,
     ErrorCode412SameValues,
     ErrorCode422,
     SuccessCode200User,
+    SuccessCode201Camera,
     SuccessCode200GetAll,
-    SuccessCode200UpdateThread,
-    SuccessCode200UpdateVote,
-    SuccessCode200UpdateCommentVote,
+    SuccessCode200UpdateCamera,
     SuccessCode201User,
-    SuccessCode201Thread,
-    SuccessCode201Comment,
-    SuccessCode201CommentVote,
-    SuccessCode201Vote,
-    SuccessCode201Users,
+    SuccessCode201Alarm,
     SuccessCode204
 };
