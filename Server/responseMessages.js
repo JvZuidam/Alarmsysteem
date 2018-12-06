@@ -8,6 +8,13 @@ function ErrorCode401(result) {
     });
 }
 
+function ErrorCode404(result) {
+    result.status(404).json({
+        code: 404,
+        message: "Not found, Document does not exist",
+        datetime: moment().format()});
+}
+
 function ErrorCode409DuplicateUser(result) {
     result.status(409).json({
         code: 409,
@@ -70,6 +77,15 @@ function SuccessCode200UpdateCamera(result, cameraName, location) {
     });
 }
 
+function SuccessCode200UpdateAlarm(result, newAlarmName, newDescription, newAlarmType, newAlarmLevel) {
+    result.status(200).json({
+        code: 200,
+        message: {newAlarmName: newAlarmName, newDescription: newDescription, newAlarmType: newAlarmType, newAlarmLevel: newAlarmLevel,},
+        datetime: moment().format()
+    });
+}
+
+
 function SuccessCode201User(result, username, password) {
     result.status(201).json({
         code: 201,
@@ -99,6 +115,7 @@ function SuccessCode204(result) {
 
 module.exports = {
     ErrorCode401,
+    ErrorCode404,
     ErrorCode409DuplicateUser,
     ErrorCode409DuplicateCamera,
     ErrorCode412,
@@ -108,6 +125,7 @@ module.exports = {
     SuccessCode201Camera,
     SuccessCode200GetAll,
     SuccessCode200UpdateCamera,
+    SuccessCode200UpdateAlarm,
     SuccessCode201User,
     SuccessCode201Alarm,
     SuccessCode204
