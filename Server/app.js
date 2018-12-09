@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const app = express();
 const port = process.env.PORT || 3000;
 // const db = require("./dbCon");
-const envVar = 'production';
+const envVar = 'test';
 
 app.use("/user", require("./routes/user"));
 app.use("/camera", require("./routes/camera"));
