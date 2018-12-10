@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 const app = express();
 const port = process.env.PORT || 3000;
 // const db = require("./dbCon");
@@ -8,6 +9,7 @@ const envVar = 'production';
 app.use("/user", require("./routes/user"));
 app.use("/camera", require("./routes/camera"));
 app.use("/alarm", require("./routes/alarm"));
+app.use(cors());
 
 app.get("*", (request, result) => {
     result.status(404);
