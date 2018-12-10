@@ -23,13 +23,13 @@ export class UserService {
 
   public getUsers(): Observable<User[]> {
     console.log('getUsers');
-    return this.http.get<ApiResponse>(`${environment.apiUrl}/api/persons?offset=0&amount=8`).pipe(
+    return this.http.get<ApiResponse>(`${environment.apiUrl}/user`).pipe(
       //   convert incoming responsestring to json
       // map(response => response.json()),
       //   get only the results property
-      // map(response => response.results),
+      map(response => response.results),
       //   optionally log the results
-      // tap(console.log),
+      tap(console.log),
       //   convert json array to User array
       // map(users => users.map(data => new User(data))),
       //   optionally log the results

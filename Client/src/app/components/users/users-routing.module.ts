@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { UsersComponent } from './users.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
-import { AdminGuard as UserIsAdmin } from '../../admin.guard';
 import { UserNotfoundComponent } from './user-notfound/user-notfound.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
 

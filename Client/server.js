@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const http = require('http');
+const cors = require('cors');
 const compression = require('compression');
 
 const app = express();
@@ -8,6 +9,7 @@ const app = express();
 // Compress static assets to enhance performance.
 // Decrease the download size of your app through gzip compression:
 app.use(compression());
+app.use(cors());
 
 //
 // appname is the name of the "defaultProject" value that was set in the angular.json file.

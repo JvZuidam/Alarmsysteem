@@ -2,71 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e639fedd-1dd0-410d-97fd-46e04d02be96" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/alarms/alarm-details/alarm-details.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/alarms/alarm-details/alarm-details.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/alarms/alarm-details/alarm-details.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/alarms/alarm-details/alarm-details.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/alarms/alarm-edit/alarm-edit.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/alarms/alarm-edit/alarm-edit.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/alarms/alarm-edit/alarm-edit.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/alarms/alarm-edit/alarm-edit.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/alarms/alarm-list/alarm-list.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/alarms/alarm-list/alarm-list.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/alarms/alarm-list/alarm-list.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/alarms/alarm-list/alarm-list.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/alarms/alarms.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/alarms/alarms.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/alarms/alarms.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/alarms/alarms.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/cameras/camera-details/camera-details.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/cameras/camera-details/camera-details.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/cameras/camera-details/camera-details.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/cameras/camera-details/camera-details.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/cameras/camera-edit/camera-edit.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/cameras/camera-edit/camera-edit.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/cameras/camera-edit/camera-edit.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/cameras/camera-edit/camera-edit.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/cameras/camera-list/camera-list.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/cameras/camera-list/camera-list.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/cameras/camera-list/camera-list.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/cameras/camera-list/camera-list.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/cameras/cameras.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/cameras/cameras.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/cameras/cameras.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/cameras/cameras.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/dashboard/dashboard.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/dashboard/dashboard.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/dashboard/dashboard.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/dashboard/dashboard.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/header/header.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/header/header.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/header/header.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/header/header.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/users/user-details/user-details.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/users/user-details/user-details.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/users/user-details/user-details.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/users/user-edit/user-edit.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/users/user-edit/user-edit.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/users/user-edit/user-edit.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/users/user-list/user-item/user-item.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/users/user-list/user-item/user-item.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/users/user-list/user-item/user-item.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/users/user-list/user-list.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/users/user-list/user-list.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/users/user-list/user-list.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/users/user-list/user-list.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/users/user-notfound/user-notfound.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/users/user-notfound/user-notfound.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/users/user-notfound/user-notfound.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/users/user-notfound/user-notfound.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/users/user.model.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/users/users-routing.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/users/users.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/users/users.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/users/users.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/users/users.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/users/users.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Client/src/app/components/users/users.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Client/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/angular.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/package.json" afterDir="false" />
@@ -74,6 +9,9 @@
       <change beforePath="$PROJECT_DIR$/../Client/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/app/app-routing.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Client/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/app/app.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Client/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Client/src/app/components/header/header.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/app/components/header/header.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Client/src/app/components/users/users-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/app/components/users/users-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Client/src/app/components/users/users.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/app/components/users/users.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Client/src/environments/environment.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/environments/environment.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
     </list>
@@ -119,14 +57,14 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="js" value="3910" />
+          <entry key="js" value="3920" />
           <entry key="json" value="27" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JSON" value="27" />
-          <entry key="JavaScript" value="3910" />
+          <entry key="JavaScript" value="3920" />
         </counts>
       </usages-collector>
     </session>
@@ -145,8 +83,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="22" column="3" lean-forward="true" selection-start-line="22" selection-start-column="3" selection-end-line="22" selection-end-column="3" />
+            <state relative-caret-position="357">
+              <caret line="21" column="11" lean-forward="true" selection-start-line="21" selection-start-column="11" selection-end-line="21" selection-end-column="11" />
             </state>
           </provider>
         </entry>
@@ -303,12 +241,12 @@
       <workItem from="1544133222388" duration="3788000" />
       <workItem from="1544181127537" duration="69000" />
       <workItem from="1544386269585" duration="467000" />
-      <workItem from="1544480602254" duration="12000" />
+      <workItem from="1544480602254" duration="114000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="38080000" />
+    <option name="totallyTimeSpent" value="38182000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -420,8 +358,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="3" lean-forward="true" selection-start-line="22" selection-start-column="3" selection-end-line="22" selection-end-column="3" />
+        <state relative-caret-position="357">
+          <caret line="21" column="11" lean-forward="true" selection-start-line="21" selection-start-column="11" selection-end-line="21" selection-end-column="11" />
         </state>
       </provider>
     </entry>
