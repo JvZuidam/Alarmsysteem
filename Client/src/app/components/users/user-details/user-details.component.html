@@ -1,0 +1,33 @@
+<div class="sticky-component">
+
+	<div class="row">
+		<div class="col-8">
+			<h2>{{title}}</h2>
+		</div>
+		<div class="col">
+			<button 
+				*ngIf="user"
+				type="button" 
+				class="btn btn-outline-warning float-right"
+				routerLink='edit'
+			>Edit</button>
+		</div>
+	</div>
+
+	<div *ngIf="user">
+
+		<!-- https://getbootstrap.com/docs/4.1/layout/media-object/ -->
+		<div class="media">
+			<img class="mr-3 circle" src="{{user.picture.medium}}" alt="Generic placeholder image">
+			<div class="media-body">
+				<h5 class="mt-0">{{user.name.first | titlecase}} {{user.name.last | titlecase}}</h5>
+				<p>{{user.email}}</p>
+			</div>
+		</div>
+
+	</div>
+	<div *ngIf="!user">
+		<p>Select a user first.</p>
+	</div>
+
+</div>

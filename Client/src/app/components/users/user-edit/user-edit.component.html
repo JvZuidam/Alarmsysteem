@@ -1,0 +1,217 @@
+<div class="sticky-component">
+  <div class="row">
+    <div class="col">
+      <h2>{{title}}</h2>
+    </div>
+  </div> 
+
+  <!-- Debug: display editmode -->
+  <!-- <p>Edit mode = {{ editMode | json }}</p> -->
+
+  <!-- See https://angular.io/guide/forms-overview for documentation on forms -->
+  <!-- See https://getbootstrap.com/docs/4.0/components/forms/#layout for info about Bootstrap form styling -->
+  <form 
+    *ngIf="user"
+    #userEditForm="ngForm"
+    name="form" 
+    (ngSubmit)="userEditForm.form.valid && onSubmit()"
+    novalidate
+  >
+
+    <div class="form-row">
+      <div class="form-group col-sm-12 col-lg-6">
+        <label for="firstName">First Name</label>
+        <input 
+          type="text"
+          class="form-control"
+          [(ngModel)]="user.name.first"
+          name="firstName"
+          #firstName="ngModel"
+          [ngClass]="{ 
+            'is-invalid': firstName.invalid && (firstName.dirty || firstName.touched)
+          }"
+          required
+          minlength="3"
+        />
+        <div *ngIf="firstName.invalid && (firstName.touched)" class="invalid-feedback">
+          <div *ngIf="firstName?.errors.required">First Name is required</div>
+          <div *ngIf="firstName?.errors.minlength">First Name must be at least 3 characters long.</div>
+        </div>
+        <!-- Debugging inputstatus -->
+        <!-- <p>firstName.invalid = {{firstName.invalid}}</p> -->
+        <!-- <p>firstName.touched = {{firstName.touched}}</p> -->
+        <!-- <p>firstName.dirty = {{firstName.dirty}}</p> -->
+        <!-- <p>firstName.pristine = {{firstName.pristine}}</p> -->
+      </div>
+  
+      <div class="form-group col-sm-12 col-lg-6">
+        <label for="lastName">Last Name</label>
+        <input
+          type="text"
+          class="form-control"
+          name="lastName"
+          [(ngModel)]="user.name.last"
+          #lastName="ngModel"
+          [ngClass]="{ 
+            'is-invalid': lastName.invalid && (lastName.dirty || lastName.touched)
+          }"
+          required
+          minlength="3"
+        />
+        <div *ngIf="lastName.invalid && (lastName.touched)" class="invalid-feedback">
+          <div *ngIf="lastName?.errors.required">Lastname is required</div>
+          <div *ngIf="lastName?.errors.minlength">Lastname must be at least 3 characters long.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-lg-12">
+        <label for="gender">Gender</label>
+        <div class="form-group col-lg-12">
+          <!-- Male Gender -->
+          <div class="custom-control custom-radio custom-control-inline">
+            <input
+              type="radio"
+              id="genderMale"
+              name="gender"
+              class="custom-control-input"
+              [(ngModel)]="user.gender"
+              #gender="ngModel"
+              value="male"
+            >
+            <label class="custom-control-label" for="genderMale">Male</label>
+          </div>
+          <!-- Female Gender -->
+          <div class="custom-control custom-radio custom-control-inline">
+            <input
+              type="radio"
+              id="genderFemale"
+              name="gender"
+              class="custom-control-input"
+              [(ngModel)]="user.gender"
+              #gender="ngModel"
+              value="female"
+            >
+            <label class="custom-control-label" for="genderFemale">Female</label>
+          </div>
+          <!-- Unknown Gender -->
+          <div class="custom-control custom-radio custom-control-inline">
+            <input
+              type="radio"
+              id="genderUnknown"
+              name="gender"
+              class="custom-control-input"
+              [(ngModel)]="user.gender"
+              #gender="ngModel"
+              value="unknown"
+            >
+            <label class="custom-control-label" for="genderUnknown">Unknown</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-lg-12">
+        <label for="inputEmail">Email</label>
+        <input
+          type="email"
+          class="form-control"
+          name="inputEmail"
+          [(ngModel)]="user.email"
+          #inputEmail="ngModel"
+          [ngClass]="{ 
+            'is-invalid': inputEmail.invalid && (inputEmail.dirty || inputEmail.touched)
+          }"
+          required
+        />
+        <div *ngIf="inputEmail.invalid" class="invalid-feedback">
+          <div *ngIf="inputEmail?.errors.required">Email is required</div>
+          <div *ngIf="inputEmail?.errors.email">Email must be a valid email address</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-lg-6">
+        <label for="birthdate">Birthdate</label>
+        <div class="input-group">
+          <input
+            class="form-control"
+            name="birthdate"
+            [(ngModel)]="dob"
+            ngbDatepicker
+            #birthdate="ngbDatepicker"
+            data-date-format="DD-MM-YYYY"
+            [ngClass]="{ 
+              'is-invalid': birthdate.invalid && (birthdate.dirty || birthdate.touched)
+            }"
+            required
+          >
+          <div class="input-group-append">
+            <button
+              class="btn btn-outline-secondary"
+              (click)="birthdate.toggle()"
+              type="button"
+            >
+            <i class="far fa-calendar-alt"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!-- <pre>Model: {{ dob | json }}</pre> -->
+
+    <div class="form-row align-items-center">
+      <div class="col-auto my-1">
+        <label class="mr-sm-2" for="inlineFormCustomSelect">Nationality</label>
+        <select
+          class="custom-select mr-sm-2"
+          id="inlineFormCustomSelect"
+          name="nationality"
+          [(ngModel)]="user.nat"
+          #nationality="ngModel"
+        >
+          <option selected>Choose...</option>
+          <option
+            *ngFor="let nat of nationalities"
+            [value]="nat.code"
+          >
+            {{nat.country}}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-row align-items-right">
+      <div class="col-auto">
+      <div class="form-group float-right">
+        <button 
+          type="button"
+          class="btn btn-spacing btn-outline-warning float-right"
+          routerLink='..'
+        >Cancel
+        </button>
+        <button 
+          type="submit"
+          class="btn btn-success float-right"
+          [disabled]="!userEditForm.valid"
+        >Save
+        </button>
+      </div>
+      </div>
+    </div>
+
+  </form>
+</div>
+
+<div class="card"  *ngIf="user">
+  <div class="card-body">
+    <pre>
+{{ user | json }}
+    </pre>
+  </div>
+</div>
+

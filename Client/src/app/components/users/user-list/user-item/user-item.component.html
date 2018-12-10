@@ -1,0 +1,8 @@
+<td>{{ index + 1 }}</td>
+<td>
+  <img src="{{selectedUser.picture.thumbnail}}" alt="" class="circle">
+  <a href="#" [routerLink]="[index]">
+    {{selectedUser.name.title}} {{ selectedUser.name.first | titlecase }} {{selectedUser.name.last | titlecase}}
+  </a>
+</td>
+<td>{{ selectedUser.email }}</td>
