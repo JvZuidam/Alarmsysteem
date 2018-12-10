@@ -16,7 +16,7 @@ app.use(compression());
 //
 // Replace the name below to match your own "defaultProject" value!
 //
-const appname = 'angular-heroku';
+const appname = 'Client';
 
 // Point static path to dist
 app.use(express.static(path.join(__dirname, 'dist', appname)));
