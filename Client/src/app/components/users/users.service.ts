@@ -8,15 +8,16 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
 
-  users: User[]
+export class UsersService {
+  users: User[];
 
   usersAvailable = new BehaviorSubject<boolean>(false);
 
-  constructor(
+
+  constructor (
     private http: HttpClient
-  ) { 
+  ) {
     console.log('UserService constructed');
     console.log(`Connected to ${environment.apiUrl}`);
   }
@@ -31,22 +32,22 @@ export class UserService {
       //   optionally log the results
       tap(console.log),
       //   convert json array to User array
-      // map(users => users.map(data => new User(data))),
+      map(users => users.map(data => new User())),
       //   optionally log the results
       // tap(console.log)
 
       catchError(this.handleError), // then handle the error
-      // tap( // Log the result or error
-      //   data => console.log(data),
-      //   error => console.error('NU HIER: ' + error)
-      // ),
+      tap( // Log the result or error
+        data => console.log(data),
+        error => console.error('NU HIER: ' + error)
+      ),
       // all of the above can also be done in one operation:
-      map(response => response.results.map(data => new User(data))),
+      map(response => response.results.map(data => new User())),
       tap(users => {
-          this.users = users;
-          this.usersAvailable.next(true);
-        })
-        // error => console.log(error))
+        this.users = users;
+        this.usersAvailable.next(true);
+      })
+      // error => console.log(error))
     );
   }
 
@@ -70,8 +71,8 @@ export class UserService {
         catchError(this.handleError), // then handle the error
         tap( // Log the result or error
           data => console.log(data)
-          // ,
-          // error => console.error(error)
+          ,
+          error => console.error(error)
         )
       );
 
@@ -84,28 +85,23 @@ export class UserService {
   }
 
   private handleError(error: HttpErrorResponse) {
-    // if (error.error instanceof ErrorEvent) {
-    //   // A client-side or network error occurred. Handle it accordingly.
-    //   console.error('An error occurred:', error.error.message);
-    // } else {
-    //   // The backend returned an unsuccessful response code.
-    //   // The response body may contain clues as to what went wrong,
-    //   console.error(
-    //     `Backend returned code ${error.status}, ` +
-    //     `body was: ${error.message}`);
-    // }
+    if (error.error instanceof ErrorEvent) {
+      // A client-side or network error occurred. Handle it accordingly.
+      console.error('An error occurred:', error.error.message);
+    } else {
+      // The backend returned an unsuccessful response code.
+      // The response body may contain clues as to what went wrong,
+      console.error(
+        `Backend returned code ${error.status}, ` +
+        `body was: ${error.message}`);
+    }
     // return an observable with a user-facing error message
     return throwError(
       // 'Something bad happened; please try again later.'
-      error.message || error.error.message      
+      error.message || error.error.message
     );
   };
-
 }
-
-/**
- * This interface specifies the structure of the expected API server response. 
- */
 export interface ApiResponse {
   results: any[];
 }

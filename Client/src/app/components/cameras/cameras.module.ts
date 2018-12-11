@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 // import { HttpModule } from '@angular/http';
 import { CommonModule } from '@angular/common';
-import { UserRoutingModule } from './users-routing.module';
-import { UsersComponent } from './users.component';
+import { CamerasComponent } from './cameras.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
+import {CameraRoutingModule} from './cameras-routing.module';
 
 @NgModule({
   declarations: [
-    UsersComponent,
+    CamerasComponent,
   ],
   imports: [
     CommonModule,
@@ -18,13 +18,13 @@ import { HttpClientModule } from '@angular/common/http';
     // HttpModule,
     HttpClientModule,
     NgbModule,
-    UserRoutingModule   // Order is important, MUST be BEFORE AppRoutingModule!
+    CameraRoutingModule   // Order is important, MUST be BEFORE AppRoutingModule!
     // AppRoutingModule  // NO import of AppRoutingModule - would overwrite previous routes!
   ],
   providers: [
   ],
   exports: [
-    UsersComponent
+    CamerasComponent
   ]
 })
-export class UsersModule { }
+export class CamerasModule { }

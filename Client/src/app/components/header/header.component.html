@@ -19,6 +19,19 @@
             <!--<a class="dropdown-item">Another Action</a>-->
             <!--<a class="dropdown-item">Something else is here</a>-->
           </div>
+
+        </li>
+        <li ngbDropdown class="nav-item dropdown">
+          <a class="nav-link" id="dropdownBasic2" ngbDropdownToggle>Cameras</a>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <a class="dropdown-item" routerLink="/cameras" [routerLinkActive]="['active']" href="#">Show CameraComponent</a>
+          </div>
+        </li>
+        <li ngbDropdown class="nav-item dropdown">
+          <a class="nav-link" id="dropdownBasic3" ngbDropdownToggle>Alarms</a>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <a class="dropdown-item" routerLink="/alarms" [routerLinkActive]="['active']" href="#">Show AlarmComponent</a>
+          </div>
         </li>
       </ul>
       <ul class="navbar-nav">

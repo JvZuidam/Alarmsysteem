@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CamerasComponent implements OnInit {
 
+  title = "Users Component";
+
   constructor() { }
 
   ngOnInit() {
