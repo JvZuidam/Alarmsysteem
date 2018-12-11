@@ -6,10 +6,16 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import {AlarmsRoutingModule} from './alarms-routing.module';
 import {AlarmsComponent} from './alarms.component';
+import {AlarmListComponent} from './alarm-list/alarm-list.component';
+import {AlarmEditComponent} from './alarm-edit/alarm-edit.component';
+import {AlarmDetailsComponent} from './alarm-details/alarm-details.component';
 
 @NgModule({
   declarations: [
     AlarmsComponent,
+    AlarmListComponent,
+    AlarmEditComponent,
+    AlarmDetailsComponent
   ],
   imports: [
     CommonModule,

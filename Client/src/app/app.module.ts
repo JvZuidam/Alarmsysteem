@@ -10,11 +10,13 @@ import {UsersModule} from './components/users/users.module';
 import {CamerasModule} from './components/cameras/cameras.module';
 import {AlarmsModule} from './components/alarms/alarms.module';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
     HeaderComponent,
+
   ],
   imports: [
     BrowserModule,
