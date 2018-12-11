@@ -6,4 +6,10 @@ export class Camera {
   location: string;
   user: string;
   alarm: Alarm[];
+
+  constructor(values: Object = {}) {
+    Object.assign(this, values);
+  }
 }
+
+

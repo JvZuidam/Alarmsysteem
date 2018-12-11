@@ -17,8 +17,8 @@ export class CameraListComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.subscription = this.cameraService.getCameras()
       .subscribe(
-        (cameras: any[]) => {
-         this.camera = cameras.results;
+        (response) => {
+         this.camera = response;
         },
         (error) => console.warn(error)
       );
