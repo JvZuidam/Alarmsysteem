@@ -8,6 +8,12 @@ const responseMessages = require("../responseMessages");
 router.use(bodyParser.json()); // support json encoded bodies
 router.use(bodyParser.urlencoded({extended: true}));
 
+router.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
 //Create alarm
 router.post("", (request, result) => {
     const userName = request.body.username;
