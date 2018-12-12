@@ -22,7 +22,7 @@ router.post("", (request, result) => {
 
     if (Object.keys(request.body).length === 0) {
         responseMessages.ErrorCode412(result);
-    } else if (userName != null || email != null || password != null) {
+    } else if (request.body.username != null && request.body.email != null && request.body.password != null) {
 
         //Create a  new instance of User
         const newUser = new User({name: userName, email: email, password: password});

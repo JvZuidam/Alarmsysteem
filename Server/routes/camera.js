@@ -98,7 +98,9 @@ router.put("", (request, result) => {
     if (Object.keys(request.body).length === 0) {
         responseMessages.ErrorCode412(result);
     } else if (userName != null || cameraName != null || newCameraName != null || newLocation != null) {
-
+        if (cameraName == newCameraName) {
+            responseMessages.ErrorCode412SameValues(result);
+        } else {
         User.findOne({name: userName}, function (err, docs) {
             if (err || docs === null) {
                 responseMessages.ErrorCode412(result);
@@ -120,6 +122,7 @@ router.put("", (request, result) => {
                 });
             }
         });
+    }
     } else {
         responseMessages.ErrorCode412(result);
     }

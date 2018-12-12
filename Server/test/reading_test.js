@@ -10,17 +10,17 @@ describe('Reading Endpoints', () => {
         request(app)
             .post('/user')
             .send({
-                "username" : "Jim",
-                "email" : "jimvanzuidam@gmail.com",
-                "password" : "Admin123"
+                "username": "Jim",
+                "email": "jimvanzuidam@gmail.com",
+                "password": "Admin123"
             })
             .end((err, res) => {
                 request(app)
                     .post('/user')
                     .send({
-                        "username" : "Henk",
-                        "email" : "henkgrol@gmail.com",
-                        "password" : "Admin123"
+                        "username": "Henk",
+                        "email": "henkgrol@gmail.com",
+                        "password": "Admin123"
                     })
                     .end((err, res) => {
                         request(app)
@@ -46,9 +46,9 @@ describe('Reading Endpoints', () => {
         request(app)
             .post('/user')
             .send({
-                "username" : "Jim",
-                "email" : "jimvanzuidam@gmail.com",
-                "password" : "Admin123"
+                "username": "Jim",
+                "email": "jimvanzuidam@gmail.com",
+                "password": "Admin123"
             })
             .end((err, res) => {
                 request(app)
@@ -69,24 +69,24 @@ describe('Reading Endpoints', () => {
         request(app)
             .post('/user')
             .send({
-                "username" : "Jim",
-                "email" : "jimvanzuidam@gmail.com",
-                "password" : "Admin123"
+                "username": "Jim",
+                "email": "jimvanzuidam@gmail.com",
+                "password": "Admin123"
             })
             .end((err, res) => {
                 request(app)
                     .post('/camera')
                     .send({
-                        "username" : "Jim",
-                        "cameraName" : "Camera1",
+                        "username": "Jim",
+                        "cameraName": "Camera1",
                         "location": "Sleeuwijk"
                     })
                     .end((err, res) => {
                         request(app)
                             .post('/camera')
                             .send({
-                                "username" : "Jim",
-                                "cameraName" : "Camera2",
+                                "username": "Jim",
+                                "cameraName": "Camera2",
                                 "location": "Gorinchem"
                             })
                             .end((err, res) => {
@@ -112,16 +112,16 @@ describe('Reading Endpoints', () => {
         request(app)
             .post('/user')
             .send({
-                "username" : "Jim",
-                "email" : "jimvanzuidam@gmail.com",
-                "password" : "Admin123"
+                "username": "Jim",
+                "email": "jimvanzuidam@gmail.com",
+                "password": "Admin123"
             })
             .end((err, res) => {
                 request(app)
                     .post('/camera')
                     .send({
-                        "username" : "Jim",
-                        "cameraName" : "Camera1",
+                        "username": "Jim",
+                        "cameraName": "Camera1",
                         "location": "Sleeuwijk"
                     })
                     .end((err, res) => {
@@ -137,5 +137,63 @@ describe('Reading Endpoints', () => {
                             })
                     })
             })
+    });
+
+    it('Get all alarms', (done) => {
+        request(app)
+            .post('/user')
+            .send({
+                "username": "Jim",
+                "email": "jimvanzuidam@gmail.com",
+                "password": "Admin123"
+            })
+            .end((err, res) => {
+                request(app)
+                    .post('/camera')
+                    .send({
+                        "username": "Jim",
+                        "cameraName": "Camera1",
+                        "location": "Sleeuwijk"
+                    })
+                    .end((err, res) => {
+                        request(app)
+                            .post('/alarm')
+                            .send({
+                                "username": "Jim",
+                                "cameraName": "Camera1",
+                                "alarmName": "Alarm1",
+                                "description": "This is a test alarm",
+                                "alarmType": "intrusion",
+                                "alarmLevel": "High"
+                            })
+                            .end((err, res) => {
+                                request(app)
+                                    .post('/alarm')
+                                    .send({
+                                        "username": "Jim",
+                                        "cameraName": "Camera1",
+                                        "alarmName": "Alarm2",
+                                        "description": "This is another test alarm",
+                                        "alarmType": "Detection",
+                                        "alarmLevel": "Low"
+                                    })
+                                    .end((err, res) => {
+                                        Camera.find()
+                                            .then((camera) => {
+                                                assert(camera[0].cameraName === "Camera1");
+                                                assert(camera[0].alarm[0].description === "This is a test alarm");
+                                                assert(camera[0].alarm[0].alarmType === "intrusion");
+                                                assert(camera[0].alarm[0].alarmLevel === "High");
+
+                                                assert(camera[0].cameraName === "Camera1");
+                                                assert(camera[0].alarm[1].description === "This is another test alarm");
+                                                assert(camera[0].alarm[1].alarmType === "Detection");
+                                                assert(camera[0].alarm[1].alarmLevel === "Low");
+                                                done();
+                                            })
+                                    })
+                            })
+                    })
+            });
     });
 });
