@@ -1,3 +1,12 @@
+/*******************************************************
+ * Copyright (C) 2018-2019 Jim van Zuidam 2127317
+ *
+ * This file is part of ClientSideProgrammingIndividueel.
+ *
+ * ClientSideProgrammingIndividueel can not be copied and/or distributed without the express
+ * permission of Jim van Zuidam
+ *******************************************************/
+
 const mongoose = require('mongoose');
 
 const envVar = 'production';

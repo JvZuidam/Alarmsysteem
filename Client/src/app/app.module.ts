@@ -10,6 +10,14 @@ import {UsersModule} from './components/users/users.module';
 import {CamerasModule} from './components/cameras/cameras.module';
 import {AlarmsModule} from './components/alarms/alarms.module';
 
+/*******************************************************
+ * Copyright (C) 2018-2019 Jim van Zuidam 2127317
+ *
+ * This file is part of ClientSideProgrammingIndividueel.
+ *
+ * ClientSideProgrammingIndividueel can not be copied and/or distributed without the express
+ * permission of Jim van Zuidam
+ *******************************************************/
 
 @NgModule({
   declarations: [

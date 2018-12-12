@@ -6,6 +6,15 @@ import {CameraEditComponent} from './camera-edit/camera-edit.component';
 import {CameraDetailsComponent} from './camera-details/camera-details.component';
 import {CameraCreateComponent} from './camera-create/camera-create.component';
 
+/*******************************************************
+ * Copyright (C) 2018-2019 Jim van Zuidam 2127317
+ *
+ * This file is part of ClientSideProgrammingIndividueel.
+ *
+ * ClientSideProgrammingIndividueel can not be copied and/or distributed without the express
+ * permission of Jim van Zuidam
+ *******************************************************/
+
 const routes: Routes = [
   { path: 'cameras/new', component: CameraCreateComponent},
   { path: 'cameras/:id', component: CamerasComponent },
