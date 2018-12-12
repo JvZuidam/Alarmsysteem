@@ -16,7 +16,6 @@ export class CameraEditComponent implements OnInit, OnDestroy {
   cameraName: string;
   user: User;
   camera: Camera;
-  oldcamera: Camera;
   submitted = false;
   subscription: Subscription;
   subscriptionCamera: Subscription;
@@ -53,17 +52,13 @@ export class CameraEditComponent implements OnInit, OnDestroy {
 
     console.dir(this.camera);
     if(this.camera.cameraName) {
-
-      console.log(this.cameraName)
-      this.subscriptionCamera = this.cameraService.getCamera(this.cameraName)
+      this.cameraService.updateCamera(this.camera, this.cameraName)
         .subscribe(
           (response) => {
-            this.oldcamera = response[0];
+            this.camera = response[0];
           },
           (error) => console.warn(error)
         );
-
-      this.cameraService.updateCamera(this.camera, this.oldcamera);
     } else {
       console.log("create camera")
       this.cameraService.createCamera(this.camera).subscribe(

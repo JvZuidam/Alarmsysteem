@@ -50,15 +50,20 @@ export class CamerasService {
       );
   }
 
-  public updateCamera(camera: Camera, oldCamera: Camera) {
+  public updateCamera(camera: Camera, oldCameraName: string) {
     console.log(camera);
-    console.log(oldCamera);
+    console.log(oldCameraName);
     console.log('updateCamera');
-    // return this.http.get<any>('https://alarmsysteem-server.herokuapp.com/camera/Jim/' + camera.cameraName)
-    //   .pipe(
-    //     tap(response => console.log(response.results)),
-    //     map(response => response.results.map(data => new Camera(data)))
-    //   );
+    return this.http.put('https://alarmsysteem-server.herokuapp.com/camera/', {
+      "userName" : "Jim",
+      "cameraName" : oldCameraName,
+      "newCameraName" : camera.cameraName,
+      "newLocation" : camera.location
+    })
+      // .pipe(
+      //   tap(response => console.log(response.results)),
+      //   map(response => response.results.map(data => new Camera(data)))
+      // );
   }
 
   public deleteCamera() {
