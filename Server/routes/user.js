@@ -7,24 +7,31 @@ const responseMessages = require("../responseMessages");
 router.use(bodyParser.json()); // support json encoded bodies
 router.use(bodyParser.urlencoded({extended: true}));
 
+router.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
 //Create user
 router.post("", (request, result) => {
-    const username = request.body.username;
+    const userName = request.body.username;
     const email = request.body.email;
     const password = request.body.password;
 
     if (Object.keys(request.body).length === 0) {
         responseMessages.ErrorCode412(result);
-    } else if (username != null || email != null || password != null) {
+    } else if (request.body.username != null && request.body.email != null && request.body.password != null) {
 
         //Create a  new instance of User
-        const newUser = new User({name: username, email: email, password: password});
+        const newUser = new User({name: userName, email: email, password: password});
         //Save the instance of user
         newUser.save()
         //Check if the user already exists
             .then(() => {
                 //If no; Create new user
-                responseMessages.SuccessCode201User(result, username, password);
+                responseMessages.SuccessCode201User(result, userName, password);
             })
             //If yes Return errorCode.
             .catch(err => {
@@ -49,9 +56,9 @@ router.get("", (request, result) => {
 
 //Get a user
 router.get("/:username", (request, result) => {
-    const username = request.params.username;
+    const userName = request.params.username;
 
-    User.findOne({ name: username }, function (err, docs) {
+    User.findOne({name: userName}, function (err, docs) {
         if (err || docs === null) {
             responseMessages.ErrorCode422(result);
         } else {
@@ -62,24 +69,24 @@ router.get("/:username", (request, result) => {
 
 //Update a users
 router.put("", (request, result) => {
-        const username = request.body.username;
+        const userName = request.body.username;
         const password = request.body.password;
         const newPassword = request.body.newPassword;
 
         if (Object.keys(request.body).length === 0) {
             responseMessages.ErrorCode412(result);
-        } else if (username != null || password != null || newPassword != null) {
+        } else if (userName != null || password != null || newPassword != null) {
             if (password == newPassword) {
                 responseMessages.ErrorCode412SameValues(result);
             } else {
-                User.findOne({name: username}, function (err, docs) {
+                User.findOne({name: userName}, function (err, docs) {
                     if (!docs) {
                         responseMessages.ErrorCode422(result);
                     } else if (docs.password !== password) {
                         responseMessages.ErrorCode401(result);
                     } else {
-                        User.updateOne({ "name" : username }, { $set: { password : newPassword } }).then(() => {
-                            responseMessages.SuccessCode200User(result, username, newPassword);
+                        User.updateOne({"name": userName}, {$set: {password: newPassword}}).then(() => {
+                            responseMessages.SuccessCode200User(result, userName, newPassword);
                         });
                     }
                 });
@@ -91,27 +98,23 @@ router.put("", (request, result) => {
 );
 
 //Delete a users
-router.delete("", (request, result) => {
-    const username = request.body.username;
-    const password = request.body.password;
+router.delete("/:username/:password", (request, result) => {
+    const username = request.params.username;
+    const password = request.params.password;
 
-    if (Object.keys(request.body).length === 0) {
-        responseMessages.ErrorCode412(result);
-    } else if (username != null || password != null) {
-        User.findOne({name: username}, function (err, docs) {
-            if (!docs) {
-                responseMessages.ErrorCode422(result);
-            } else if (docs.password !== password) {
-                responseMessages.ErrorCode401(result);
-            } else {
-                User.deleteOne({ "name" : username }).then(() => {
-                    responseMessages.SuccessCode204(result);
-                });
-            }
-        });
-    } else {
-        responseMessages.ErrorCode412(result);
-    }
+    User.findOne({name: username}, function (err, docs) {
+        if (!docs) {
+            console.log(docs);
+            console.log(err);
+            responseMessages.ErrorCode422(result);
+        } else if (docs.password !== password) {
+            responseMessages.ErrorCode401(result);
+        } else {
+            User.deleteOne({"name": username}).then(() => {
+                responseMessages.SuccessCode204(result);
+            });
+        }
+    });
 });
 
 module.exports = router;

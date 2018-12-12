@@ -1,0 +1,79 @@
+<div class="sticky-component">
+  <div class="row">
+    <div class="col">
+      <h2>{{title}}</h2>
+    </div>
+  </div>
+  <form
+    *ngIf="camera"
+    #cameraCreateForm="ngForm"
+    name="form"
+    (ngSubmit)="cameraCreateForm.form.valid && onSubmit()"
+    novalidate
+  >
+
+    <div class="form-row">
+      <div class="form-group col-lg-12">
+        <label for="userName">username</label>
+        <input type="text" class="form-control" name="userName" [(ngModel)]="camera.user" #userName="ngModel" required minlength="3"/>
+        <div *ngIf="userName.invalid && (userName.dirty || userName.touched)"
+             class="alert alert-danger">
+          <div *ngIf="userName.errors.required">
+            username is required.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-lg-12">
+        <label for="cameraName">Camera name</label>
+        <input type="text" class="form-control" name="cameraName" [(ngModel)]="camera.cameraName" #cameraName="ngModel" required minlength="3"/>
+        <div *ngIf="cameraName.invalid && (cameraName.dirty || cameraName.touched)"
+             class="alert alert-danger">
+          <div *ngIf="cameraName.errors.required">
+            Camera name is required.
+          </div>
+          <div *ngIf="cameraName.errors.minlength">
+            Camera name must be at least 7 characters long.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-lg-12">
+        <label for="cameraLocation">Camera location</label>
+        <input type="text" class="form-control" name="cameraLocation" [(ngModel)]="camera.location" #cameraLocation="ngModel" required minlength="3"/>
+        <div *ngIf="cameraLocation.invalid && (cameraLocation.dirty || cameraLocation.touched)"
+             class="alert alert-danger">
+          <div *ngIf="cameraLocation.errors.required">
+            Camera location is required.
+          </div>
+          <div *ngIf="cameraLocation.errors.minlength">
+            Camera location must be at least 7 characters long.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row align-items-right">
+      <div class="col-auto">
+        <div class="form-group float-right">
+          <button
+            type="button"
+            class="btn btn-spacing btn-outline-warning float-right"
+            routerLink='..'
+          >Cancel
+          </button>
+          <button
+            type="submit"
+            class="btn btn-success float-right"
+            [disabled]="!cameraCreateForm.valid"
+          >Save
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

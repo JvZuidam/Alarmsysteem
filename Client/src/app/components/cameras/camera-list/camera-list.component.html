@@ -1,0 +1,41 @@
+<div class="row" (cameraSelected)="showDetails= false" (cameraSelectedForEdit)="showEdit=false">
+  <button class="btn btn-primary" routerLink="/cameras/new" [routerLinkActive]="['active']" href="#">New Camera</button>
+  <table class="table table-hover">
+    <thead>
+    <th>Index</th>
+    <th>CameraName</th>
+    <th>CameraId</th>
+    <th>Location</th>
+    </thead>
+    <tbody>
+    <tr
+      *ngFor="let camera of cameras; let i = index" [attr.data-index]="i">
+      <td>{{ i + 1 }}</td>
+      <td>
+        <a
+          class="clearfix"
+          routerLink="/cameras/{{ camera.cameraName }}"
+          [routerLinkActive]="['active']"
+          href="#"
+          (click)="OnSelected()"
+        >{{ camera.cameraName }}</a></td>
+      <td>{{ camera._id }}</td>
+      <td>{{ camera.location }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<app-camera-details *ngIf="showDetails; else infoText"></app-camera-details>
+<ng-template #infoText>
+<br />
+<p>Select a camera first.</p>
+</ng-template>
+
+<app-camera-edit *ngIf="showEdit;"></app-camera-edit>
+
+
+
+
+
+

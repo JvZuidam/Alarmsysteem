@@ -4,7 +4,6 @@ const Schema = mongoose.Schema;
 const AlarmSchema = new Schema({
     title: {
         type: String,
-        unique: [true, 'Title must be unique'],
         required: [true, 'Title is required']
     },
     camera: {
@@ -25,10 +24,16 @@ const AlarmSchema = new Schema({
         type: String,
         required: [true, 'The level of the alarm is required']
     },
+    resolved: {
+        type: Number,
+        required: [true, 'Resolved is required'],
+        default: 0
+
+    }
 });
 
 const CameraSchema = new Schema({
-    name: {
+    cameraName: {
         type: String,
         unique: [true, 'CameraName must be unique'],
         required: [true, 'CameraName is required']

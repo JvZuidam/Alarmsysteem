@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-8">
+    <h2>{{title}}</h2>
+
+    <button
+      type="button"
+      class="btn btn-outline-warning float-right"
+      routerLink="/cameras/{{camera.cameraName}}/edit"
+      [routerLinkActive]="['active']"
+      href="#"
+      (click)="OnSelectedUpdate()">Edit
+    </button>
+
+    <button
+      type="button"
+      class="btn btn-outline-danger float-right"
+      [routerLinkActive]="['active']"
+      href="#"
+      (click)="OnDelete()">Delete
+    </button>
+
+  <!-- https://getbootstrap.com/docs/4.1/layout/media-object/ -->
+  <div class="media">
+    <div class="media-body">
+      <label class="mt-0"><span>Camera name:</span> {{camera.cameraName}}</label>
+      <br />
+      <label class="mt-0"><span>Camera location:</span> {{camera.location}}</label>
+    </div>
+  </div>
+  </div>
+</div>
