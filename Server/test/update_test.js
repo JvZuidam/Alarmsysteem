@@ -22,9 +22,8 @@ describe('Updating Endpoints', () => {
                         "newPassword" : "NewAdmin123"
                     })
                     .end((err, res) => {
-                        User.findOne({ "username" : "Jim" })
+                        User.findOne({ "name" : "Jim" })
                             .then((user) => {
-                                assert(user.name === "Jim");
                                 assert(user.password === "NewAdmin123");
                                 done();
                             });
@@ -44,7 +43,7 @@ describe('Updating Endpoints', () => {
                     .post('/camera')
                     .send({
                         "username" : "Jim",
-                        "cameraName" : "Camera1",
+                        "cameraName" : "Camera2",
                         "location": "Sleeuwijk"
                     })
                     .end((err, res) => {
@@ -54,11 +53,10 @@ describe('Updating Endpoints', () => {
                                 "username" : "Jim",
                                 "cameraName" : "Camera2",
                                 "newCameraName" : "Camera3",
-                                "location": "Sleeuwijk",
                                 "newLocation" : "Gorinchem"
                             })
                             .end((err, res) => {
-                                Camera.findOne({ "cameraName" : "Camera2" })
+                                Camera.findOne({ "cameraName" : "Camera3" })
                                     .then((user) => {
                                         assert(user.cameraName === "Camera3");
                                         assert(user.location === "Gorinchem");

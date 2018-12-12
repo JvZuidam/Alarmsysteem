@@ -8,7 +8,7 @@ const responseMessages = require("../responseMessages");
 router.use(bodyParser.json()); // support json encoded bodies
 router.use(bodyParser.urlencoded({extended: true}));
 
-router.use(function(req, res, next) {
+router.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -37,7 +37,7 @@ router.post("", (request, result) => {
                         responseMessages.ErrorCode422(result);
                     } else {
                         cameraDocs.alarm.push({
-                            title:  alarmName,
+                            title: alarmName,
                             camera: cameraDocs._id,
                             description: description,
                             alarmType: alarmType,
@@ -86,15 +86,12 @@ router.get("/:userName/:cameraName/:alarmId", (request, result) => {
 
             Camera.findOne({cameraName: cameraName}, function (err, cameraDocs) {
                 if (err || cameraDocs.alarm.length == 0) {
-                    console.log("inside");
                     responseMessages.ErrorCode422(result);
                 } else {
                     for (let i = 0; i < cameraDocs.alarm.length; i++) {
-                        console.log(cameraDocs.alarm[i]);
                         if (cameraDocs.alarm[i]._id.toString() === alarmId) {
                             responseMessages.SuccessCode200GetAll(result, cameraDocs.alarm[i]);
                         } else {
-                            console.log("inside inside");
                             responseMessages.ErrorCode422(result);
                         }
                     }
@@ -149,53 +146,47 @@ router.put("", (request, result) => {
                         }
 
 
-
                     }
                 });
             }
         });
-    }else {
+    } else {
         responseMessages.ErrorCode412(result);
     }
 });
 //Delete an alarm
-router.delete("", (request, result) => {
-    const userName = request.body.userName;
-    const cameraName = request.body.cameraName;
-    const alarmId = request.body.alarmId;
+router.delete("/:userName/:cameraName/:alarmId", (request, result) => {
+    const userName = request.params.userName;
+    const cameraName = request.params.cameraName;
+    const alarmId = request.params.alarmId;
 
-    if (Object.keys(request.body).length === 0) {
-        responseMessages.ErrorCode412(result);
-    } else if (userName != null || cameraName != null || location != null) {
-        User.findOne({name: userName}, function (err, docs) {
-            if (err || docs === null) {
-                responseMessages.ErrorCode412(result);
-            } else {
+    User.findOne({name: userName}, function (err, docs) {
+        if (err || docs === null) {
+            responseMessages.ErrorCode412(result);
+        } else {
 
-                Camera.findOne({cameraName: cameraName}, function (err, cameraDocs) {
-                    if (err || cameraDocs.alarm.length == 0) {
-                        console.log("inside");
-                        responseMessages.ErrorCode422(result);
-                    } else {
-                        for (let i = 0; i < cameraDocs.alarm.length; i++) {
-                            console.log(cameraDocs.alarm[i]);
-                            if (cameraDocs.alarm[i]._id.toString() === alarmId) {
-                                cameraDocs.alarm.pull({
-                                    _id: alarmId,
-                                });
-                                responseMessages.SuccessCode204(result);
-                                cameraDocs.save();
-                            } else {
-                                console.log("inside inside");
-                                responseMessages.ErrorCode422(result);
-                            }
+            Camera.findOne({cameraName: cameraName}, function (err, cameraDocs) {
+                if (err || cameraDocs.alarm.length == 0) {
+                    console.log("inside");
+                    responseMessages.ErrorCode422(result);
+                } else {
+                    for (let i = 0; i < cameraDocs.alarm.length; i++) {
+                        console.log(cameraDocs.alarm[i]);
+                        if (cameraDocs.alarm[i]._id.toString() === alarmId) {
+                            cameraDocs.alarm.pull({
+                                _id: alarmId,
+                            });
+                            responseMessages.SuccessCode204(result);
+                            cameraDocs.save();
+                        } else {
+                            console.log("inside inside");
+                            responseMessages.ErrorCode422(result);
                         }
                     }
-                });
-            }
-        });
-    }
-
+                }
+            });
+        }
+    });
 });
 
 module.exports = router;

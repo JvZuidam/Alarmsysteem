@@ -15,18 +15,7 @@ describe('Delete Endpoints', () => {
             })
             .end((err, res) => {
                 request(app)
-                    .del('/user')
-                    .send({
-                        "username" : "Jim",
-                        "password" : "Admin123"
-                    })
-                    .end((err, res) => {
-                        User.findOne({"name": "Jim"})
-                            .then((user) => {
-                                assert(user === null);
-                                done();
-                            });
-                    })
+                    .del('/user/Jim/Admin123').expect(204).end(done);
             });
     });
 
@@ -43,22 +32,12 @@ describe('Delete Endpoints', () => {
                     .post('/camera')
                     .send({
                         "username" : "Jim",
-                        "cameraName" : "Camera1",
+                        "cameraName" :"Camera1",
                         "location": "Sleeuwijk"
                     })
                     .end((err, res) => {
                         request(app)
-                            .del('/camera')
-                            .send({
-                                "cameraName" : "Camera1"
-                            })
-                            .end((err, res) => {
-                                Camera.findOne({ "cameraName" : "Camera1" })
-                                    .then((camera) => {
-                                        assert(camera === null);
-                                        done();
-                                    });
-                            })
+                            .del('/camera/Jim/Camera1').expect(204).end(done);
                     });
             });
     });

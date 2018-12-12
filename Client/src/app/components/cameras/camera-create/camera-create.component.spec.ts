@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CameraNotfoundComponent } from './camera-notfound.component';
+import { CameraCreateComponent } from './camera-create.component';
 
-describe('CameraNotfoundComponent', () => {
-  let component: CameraNotfoundComponent;
-  let fixture: ComponentFixture<CameraNotfoundComponent>;
+describe('CameraCreateComponent', () => {
+  let component: CameraCreateComponent;
+  let fixture: ComponentFixture<CameraCreateComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CameraNotfoundComponent ]
+      declarations: [ CameraCreateComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CameraNotfoundComponent);
+    fixture = TestBed.createComponent(CameraCreateComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

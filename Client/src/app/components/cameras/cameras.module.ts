@@ -10,7 +10,7 @@ import {CameraRoutingModule} from './cameras-routing.module';
 import { CameraItemComponent } from './camera-list/camera-item/camera-item.component';
 import {CameraDetailsComponent} from './camera-details/camera-details.component';
 import {CameraEditComponent} from './camera-edit/camera-edit.component';
-import { CameraNotfoundComponent } from './camera-notfound/camera-notfound.component';
+import { CameraCreateComponent } from './camera-create/camera-create.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,7 @@ import { CameraNotfoundComponent } from './camera-notfound/camera-notfound.compo
     CameraItemComponent,
     CameraDetailsComponent,
     CameraEditComponent,
-    CameraNotfoundComponent
+    CameraCreateComponent
   ],
   imports: [
     CommonModule,

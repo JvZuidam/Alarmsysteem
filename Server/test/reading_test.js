@@ -1,9 +1,10 @@
 const assert = require('assert');
 const request = require('supertest');
 const app = require('../app');
-const User = require('../src/user');
-const Camera = require('../src/Camera');
+const User = require("../src/user");
+const Camera = require("../src/camera");
 
+//
 describe('Reading Endpoints', () => {
     it('Get all Users', (done) => {
         request(app)
@@ -40,7 +41,7 @@ describe('Reading Endpoints', () => {
                     })
             })
     });
-
+//
     it('Get 1 User', (done) => {
         request(app)
             .post('/user')
@@ -63,7 +64,7 @@ describe('Reading Endpoints', () => {
                     })
             })
     });
-
+//
     it('Get all Cameras', (done) => {
         request(app)
             .post('/user')
@@ -106,7 +107,7 @@ describe('Reading Endpoints', () => {
 
             })
     });
-
+//
     it('Get 1 Camera', (done) => {
         request(app)
             .post('/user')

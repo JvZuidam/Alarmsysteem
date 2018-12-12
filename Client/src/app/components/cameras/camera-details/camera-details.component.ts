@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Camera} from '../camera.model';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {CamerasService} from '../cameras.service';
 import {filter, map, switchMap, tap} from 'rxjs/operators';
 import {Subscription} from 'rxjs';
@@ -27,7 +27,8 @@ export class CameraDetailsComponent implements OnInit, OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
-    private cameraService: CamerasService
+    private cameraService: CamerasService,
+  private router: Router
   ) { }
 
   ngOnInit() {
@@ -55,6 +56,15 @@ export class CameraDetailsComponent implements OnInit, OnDestroy {
   }
 
   OnDelete() {
+    console.log(this.cameraName);
+    this.cameraService.deleteCamera(this.cameraName)
+      .subscribe(
+        (response) => {
+          this.router.navigateByUrl( '/dashboard', {skipLocationChange: true}).then(() =>
+            this.router.navigate(['cameras']));
+        },
+        (error) => console.warn(error)
+      );
 
   }
 

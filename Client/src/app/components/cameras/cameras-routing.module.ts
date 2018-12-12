@@ -4,17 +4,13 @@ import { CamerasComponent } from './cameras.component';
 import {CameraListComponent} from './camera-list/camera-list.component';
 import {CameraEditComponent} from './camera-edit/camera-edit.component';
 import {CameraDetailsComponent} from './camera-details/camera-details.component';
-import {CameraNotfoundComponent} from './camera-notfound/camera-notfound.component';
+import {CameraCreateComponent} from './camera-create/camera-create.component';
 
 const routes: Routes = [
+  { path: 'cameras/new', component: CameraCreateComponent},
   { path: 'cameras/:id', component: CamerasComponent },
   { path: 'cameras/:id/edit', component: CameraEditComponent },
-  { path: 'cameras', component: CamerasComponent, children: [
-      { path: '', component: CameraDetailsComponent },
-      { path: 'new', component: CameraEditComponent, data: { userAlreadyExists: false, title: 'New Camera' } },
-
-      { path: '**', component: CameraNotfoundComponent }
-    ] },
+  { path: 'cameras', component: CamerasComponent },
 
   { path: 'cameras/list', component: CameraListComponent },
   { path: 'cameras/list/new', component: CameraEditComponent, data: {

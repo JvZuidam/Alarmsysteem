@@ -21,15 +21,20 @@ export class CamerasService {
   //TODO: find a way to make user dynamic (Since it's now always Jim)
   public createCamera(camera: Camera) {
     console.log('createCamera');
-    return this.http.post('https://alarmsysteem-server.herokuapp.com/camera/Jim', camera)
-      .pipe(
-        // catchError(this.handleError), // then handle the error
-        tap( // Log the result or error
-          data => console.log(data)
-          ,
-          error => console.error(error)
-        )
-      );
+    console.log(camera);
+    return this.http.post('https://alarmsysteem-server.herokuapp.com/camera/', {
+      "username" : camera.user,
+      "cameraName" : camera.cameraName,
+      "location" : camera.location
+    })
+      // .pipe(
+      //   // catchError(this.handleError), // then handle the error
+      //   tap( // Log the result or error
+      //     data => console.log(data)
+      //     ,
+      //     error => console.error(error)
+      //   )
+      // );
   }
 
   public getCameras() {
@@ -66,7 +71,7 @@ export class CamerasService {
       // );
   }
 
-  public deleteCamera() {
-
+  public deleteCamera(cameraName: string) {
+    return this.http.delete('https://alarmsysteem-server.herokuapp.com/camera/Jim/' + cameraName)
   }
 }

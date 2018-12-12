@@ -1,5 +1,5 @@
 <div class="row" (cameraSelected)="showDetails= false" (cameraSelectedForEdit)="showEdit=false">
-  <button class="btn btn-primary" routerLink="/new" [routerLinkActive]="['active']" href="#">New Camera</button>
+  <button class="btn btn-primary" routerLink="/cameras/new" [routerLinkActive]="['active']" href="#">New Camera</button>
   <table class="table table-hover">
     <thead>
     <th>Index</th>
@@ -11,12 +11,6 @@
     <tr
       *ngFor="let camera of cameras; let i = index" [attr.data-index]="i">
       <td>{{ i + 1 }}</td>
-
-    <!--<tr-->
-      <!--*ngFor="let camera of cameras; let i = index"-->
-      <!--app-camera-item-->
-      <!--[selectedCamera]="camera"-->
-      <!--[index]="i">-->
       <td>
         <a
           class="clearfix"

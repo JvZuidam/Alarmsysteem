@@ -1,6 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Camera} from '../camera.model';
-import {User} from '../../users/user.model';
 import {CamerasService} from '../cameras.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Subscription} from 'rxjs';
@@ -14,7 +13,6 @@ export class CameraEditComponent implements OnInit, OnDestroy {
 
   title: string = "Camera Edit";
   cameraName: string;
-  user: User;
   camera: Camera;
   submitted = false;
   subscription: Subscription;
@@ -59,13 +57,6 @@ export class CameraEditComponent implements OnInit, OnDestroy {
           },
           (error) => console.warn(error)
         );
-    } else {
-      console.log("create camera")
-      this.cameraService.createCamera(this.camera).subscribe(
-        data => console.log(data)
-        // ,
-        // error => console.error(error)
-      );
     }
 
     this.router.navigate(['..'], { relativeTo: this.route });
