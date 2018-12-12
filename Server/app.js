@@ -1,8 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
-const port = process.env.PORT || 3000;
-const db = require("./dbCon");
+const port = process.env.PORT || 3000
+const db = require("./dbcon");
 
 app.use("/user", require("./routes/user"));
 app.use("/camera", require("./routes/camera"));
