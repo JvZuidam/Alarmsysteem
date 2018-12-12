@@ -96,12 +96,11 @@ router.put("", (request, result) => {
     const userName = request.body.userName;
     const cameraName = request.body.cameraName;
     const newCameraName = request.body.newCameraName;
-    const location = request.body.location;
     const newLocation = request.body.newLocation;
 
     if (Object.keys(request.body).length === 0) {
         responseMessages.ErrorCode412(result);
-    } else if (userName != null || cameraName != null || newCameraName != null || location != null || newLocation != null) {
+    } else if (userName != null || cameraName != null || newCameraName != null || newLocation != null) {
 
         User.findOne({name: userName}, function (err, docs) {
             if (err || docs === null) {

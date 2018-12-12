@@ -7,9 +7,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import {CameraRoutingModule} from './cameras-routing.module';
-import { CameraItemComponent } from './camera-item/camera-item.component';
+import { CameraItemComponent } from './camera-list/camera-item/camera-item.component';
 import {CameraDetailsComponent} from './camera-details/camera-details.component';
 import {CameraEditComponent} from './camera-edit/camera-edit.component';
+import { CameraNotfoundComponent } from './camera-notfound/camera-notfound.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import {CameraEditComponent} from './camera-edit/camera-edit.component';
     CameraListComponent,
     CameraItemComponent,
     CameraDetailsComponent,
-    CameraEditComponent
+    CameraEditComponent,
+    CameraNotfoundComponent
   ],
   imports: [
     CommonModule,

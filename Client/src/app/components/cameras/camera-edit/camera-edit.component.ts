@@ -1,15 +1,84 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Camera} from '../camera.model';
+import {User} from '../../users/user.model';
+import {CamerasService} from '../cameras.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-camera-edit',
   templateUrl: './camera-edit.component.html',
   styleUrls: ['./camera-edit.component.css']
 })
-export class CameraEditComponent implements OnInit {
+export class CameraEditComponent implements OnInit, OnDestroy {
 
-  constructor() { }
+  title: string = "Camera Edit";
+  cameraName: string;
+  user: User;
+  camera: Camera;
+  oldcamera: Camera;
+  submitted = false;
+  subscription: Subscription;
+  subscriptionCamera: Subscription;
+
+  constructor(
+    private cameraService: CamerasService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {
+  }
 
   ngOnInit() {
+    console.log("inside2");
+    this.subscription = this.route.params.subscribe(params => {
+      this.cameraName = params['id'];
+      this.subscriptionCamera = this.cameraService.getCamera(this.cameraName)
+        .subscribe(
+          (response) => {
+            this.camera = response[0];
+            console.log(this.camera);
+          },
+          (error) => console.warn(error)
+        );
+    });
+  }
+  //TODO: make user dynamic (It's now always Jim)
+  onSubmit() {
+    this.submitted = true;
+    console.log('onSubmit');
+
+    // Save user via the service
+    // Then navigate back to display view (= UserDetails).
+    // The display view must then show the new or edited user.
+
+    console.dir(this.camera);
+    if(this.camera.cameraName) {
+
+      console.log(this.cameraName)
+      this.subscriptionCamera = this.cameraService.getCamera(this.cameraName)
+        .subscribe(
+          (response) => {
+            this.oldcamera = response[0];
+          },
+          (error) => console.warn(error)
+        );
+
+      this.cameraService.updateCamera(this.camera, this.oldcamera);
+    } else {
+      console.log("create camera")
+      this.cameraService.createCamera(this.camera).subscribe(
+        data => console.log(data)
+        // ,
+        // error => console.error(error)
+      );
+    }
+
+    this.router.navigate(['..'], { relativeTo: this.route });
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+    this.subscriptionCamera.unsubscribe();
   }
 
 }
