@@ -133,13 +133,9 @@ router.put("", (request, result) => {
 //TODO: Pass user to this request
 //TODO: Check is user exists
 //Delete a camera
-router.delete("", (request, result) => {
-    const userName = request.body.userName;
-    const cameraName = request.body.cameraName;
-
-    if (Object.keys(request.body).length === 0) {
-        responseMessages.ErrorCode412(result);
-    } else if (cameraName != null || userName != null) {
+router.delete("/:userName/:cameraName", (request, result) => {
+    const userName = request.params.userName;
+    const cameraName = request.params.cameraName;
 
         User.findOne({name: userName}, function (err, docs) {
             if (err || docs === null) {
@@ -157,9 +153,6 @@ router.delete("", (request, result) => {
                 });
             }
         });
-    } else {
-        responseMessages.ErrorCode412(result);
-    }
 });
 
 module.exports = router;

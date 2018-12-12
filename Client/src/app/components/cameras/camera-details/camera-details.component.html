@@ -11,14 +11,13 @@
       (click)="OnSelectedUpdate()">Edit
     </button>
 
-    <!--<button-->
-      <!--type="button"-->
-      <!--class="btn btn-outline-danger float-right"-->
-      <!--routerLink="{{camera.cameraName}}/delete/"-->
-      <!--[routerLinkActive]="['active']"-->
-      <!--href="#"-->
-      <!--(click)="OnDelete()">Delete-->
-    <!--</button>-->
+    <button
+      type="button"
+      class="btn btn-outline-danger float-right"
+      [routerLinkActive]="['active']"
+      href="#"
+      (click)="OnDelete()">Delete
+    </button>
 
   <!-- https://getbootstrap.com/docs/4.1/layout/media-object/ -->
   <div class="media">

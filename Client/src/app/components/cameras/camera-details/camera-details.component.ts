@@ -54,4 +54,8 @@ export class CameraDetailsComponent implements OnInit, OnDestroy {
     this.showEdit = true;
   }
 
+  OnDelete() {
+
+  }
+
 }
