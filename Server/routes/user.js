@@ -15,29 +15,29 @@ router.use(function(req, res, next) {
 
 //Create user
 router.post("", (request, result) => {
-    const userName = request.body.username;
-    const email = request.body.email;
-    const password = request.body.password;
+        const userName = request.body.username;
+        const email = request.body.email;
+        const password = request.body.password;
 
-    if (Object.keys(request.body).length === 0) {
-        responseMessages.ErrorCode412(result);
-    } else if (userName != null || email != null || password != null) {
+        if (Object.keys(request.body).length === 0) {
+            responseMessages.ErrorCode412(result);
+        } else if (userName != null || email != null || password != null) {
 
-        //Create a  new instance of User
-        const newUser = new User({name: userName, email: email, password: password});
-        //Save the instance of user
-        newUser.save()
-        //Check if the user already exists
-            .then(() => {
-                //If no; Create new user
-                responseMessages.SuccessCode201User(result, userName, password);
-            })
-            //If yes Return errorCode.
-            .catch(err => {
-                responseMessages.ErrorCode409DuplicateUser(result);
-            });
+            //Create a  new instance of User
+            const newUser = new User({name: userName, email: email, password: password});
+            //Save the instance of user
+            newUser.save()
+            //Check if the user already exists
+                .then(() => {
+                    //If no; Create new user
+                    responseMessages.SuccessCode201User(result, userName, password);
+                })
+                //If yes Return errorCode.
+                .catch(err => {
+                    responseMessages.ErrorCode409DuplicateUser(result);
+                });
 
-    } else {
+        } else {
         responseMessages.ErrorCode412(result);
     }
 });

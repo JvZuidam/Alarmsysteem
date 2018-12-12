@@ -9,6 +9,7 @@ import {Camera} from '../camera.model';
   styleUrls: ['./camera-list.component.css']
 })
 export class CameraListComponent implements OnInit, OnDestroy {
+  title: "CameraListComponent";
   camera: Camera[];
   subscription: Subscription;
 

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import 'rxjs-compat/add/operator/map';
+// import 'rxjs-compat/add/operator/map';
 import {Camera} from './camera.model';
 import {map, tap} from 'rxjs/operators';
 
