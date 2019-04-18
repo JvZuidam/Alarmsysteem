@@ -20,16 +20,19 @@ router.post("", (request, result) => {
     const userName = request.body.username;
     const cameraName = request.body.cameraName;
     const location = request.body.location;
+    const company = request.body.company;
+    const building = request.body.building;
+    const angle = request.body.angle;
 
     if (Object.keys(request.body).length === 0) {
         responseMessages.ErrorCode412(result);
-    } else if (userName != null || cameraName != null || location != null) {
+    } else if (userName != null || cameraName != null || location != null || company != null || building != null || angle != null) {
 
         User.findOne({name: userName}, function (err, docs) {
             if (err || docs === null) {
                 responseMessages.ErrorCode412(result);
             } else {
-                const newCamera = new Camera({cameraName: cameraName, location: location, user: docs._id});
+                const newCamera = new Camera({cameraName: cameraName, location: location, company: company, building: building, angle: angle, user: docs._id});
                 //Save the instance of user
                 newCamera.save()
                 //Check if the user already exists
@@ -92,13 +95,21 @@ router.get("/:userName/:cameraName", (request, result) => {
 router.put("", (request, result) => {
     const userName = request.body.username;
     const cameraName = request.body.cameraName;
+    const location = request.body.location;
+    const company = request.body.company;
+    const building = request.body.building;
+    const angle = request.body.angle;
+
     const newCameraName = request.body.newCameraName;
     const newLocation = request.body.newLocation;
+    const newCompany = request.body.newCompany;
+    const newBuilding = request.body.newBuilding;
+    const newAngle = request.body.newAngle;
 
     if (Object.keys(request.body).length === 0) {
         responseMessages.ErrorCode412(result);
-    } else if (userName != null || cameraName != null || newCameraName != null || newLocation != null) {
-        if (cameraName == newCameraName) {
+    } else if (userName != null || cameraName != null || location != null || company != null || building != null || angle != null || newCameraName != null || newLocation != null  || newCompany != null || newBuilding != null || newAngle != null) {
+        if (cameraName == newCameraName || location == newLocation || company == newCompany || building == newBuilding || angle == newAngle) {
             responseMessages.ErrorCode412SameValues(result);
         } else {
         User.findOne({name: userName}, function (err, docs) {
@@ -111,9 +122,12 @@ router.put("", (request, result) => {
                     } else {
                         docs.cameraName = newCameraName;
                         docs.location = newLocation;
+                        docs.company = newCompany;
+                        docs.building = newBuilding;
+                        docs.angle = newAngle;
                         docs.save()
                             .then(() => {
-                                responseMessages.SuccessCode200UpdateCamera(result, newCameraName, newLocation);
+                                responseMessages.SuccessCode200UpdateCamera(result, newCameraName, newLocation, newCompany, newBuilding, newAngle);
                             })
                             .catch(err => {
                                 responseMessages.ErrorCode409DuplicateCamera(result);

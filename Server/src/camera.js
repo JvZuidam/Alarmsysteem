@@ -42,6 +42,18 @@ const CameraSchema = new Schema({
       type: String,
         required: [true, "Location is required"]
     },
+    company: {
+        type: String,
+        required: [true, "Company is required"]
+    },
+    building: {
+        type: String,
+        required: [true, "Building is required"]
+    },
+    angle: {
+        type: Number,
+        required: [true, "Angle is required"]
+    },
     user: {
         type: mongoose.Schema.ObjectId,
         ref: 'user'
