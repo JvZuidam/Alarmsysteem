@@ -38,7 +38,7 @@ router.post("", (request, result) => {
                 //Check if the user already exists
                     .then(() => {
                         //If no; Create new user
-                        responseMessages.SuccessCode201Camera(result, cameraName, location);
+                        responseMessages.SuccessCode201Camera(result, cameraName, location, company, building, angle);
                     })
                     //If yes Return errorCode.
                     .catch(err => {
