@@ -94,10 +94,10 @@ function SuccessCode201User(result, username, password) {
     });
 }
 
-function SuccessCode201Camera(result, cameraName, location) {
+function SuccessCode201Camera(result, cameraName, location, company, building, angle) {
     result.status(201).json({
         code: 201,
-        message: {cameraName: cameraName, location: location,},
+        message: {cameraName: cameraName, location: location, company: company, building: building, angle: angle,},
         datetime: moment().format()});
 }
 
