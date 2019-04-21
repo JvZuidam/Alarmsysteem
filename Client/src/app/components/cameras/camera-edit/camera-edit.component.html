@@ -65,7 +65,7 @@
       </div>
     </div>
 
-    <!--Camera company-->
+    <!--Camera name-->
     <div class="form-row">
       <div class="form-group col-lg-12">
         <label for="cameraCompany">New Camera Company</label>
@@ -76,7 +76,7 @@
           [(ngModel)]="camera.company"
           #cameraName="ngModel"
           required
-          minlength="5"
+          minlength="7"
         />
 
         <div *ngIf="cameraCompany.invalid && (cameraCompany.dirty || cameraCompany.touched)"
@@ -85,7 +85,7 @@
             Camera company is required.
           </div>
           <div *ngIf="cameraCompany.errors.minlength">
-            Camera company must be at least 5 characters long.
+            Camera company must be at least 7 characters long.
           </div>
         </div>
 
