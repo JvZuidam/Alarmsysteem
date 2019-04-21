@@ -92,8 +92,8 @@
     <div class="form-row">
       <div class="form-group col-lg-12">
         <label for="cameraAngle">Camera location</label>
-        <input type="text" class="form-control" name="cameraAngle" [(ngModel)]="camera.angle" #form-group="ngModel" required minlength="2"/>
-        <div *ngIf="cameraAngle.invalid && (form-group.dirty || form-group.touched)"
+        <input type="text" class="form-control" name="cameraAngle" [(ngModel)]="camera.angle" #cameraAngle="ngModel" required minlength="2"/>
+        <div *ngIf="cameraAngle.invalid && (cameraAngle.dirty || cameraAngle.touched)"
              class="alert alert-danger">
           <div *ngIf="cameraAngle.errors.required">
             Camera angle is required.
