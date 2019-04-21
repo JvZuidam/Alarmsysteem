@@ -28,7 +28,7 @@
     <div class="form-row">
       <div class="form-group col-lg-12">
         <label for="cameraName">Camera name</label>
-        <input type="text" class="form-control" name="cameraName" [(ngModel)]="camera.cameraName" #cameraName="ngModel" required minlength="3"/>
+        <input type="text" class="form-control" name="cameraName" [(ngModel)]="camera.cameraName" #cameraName="ngModel" required minlength="7"/>
         <div *ngIf="cameraName.invalid && (cameraName.dirty || cameraName.touched)"
              class="alert alert-danger">
           <div *ngIf="cameraName.errors.required">
@@ -44,7 +44,7 @@
     <div class="form-row">
       <div class="form-group col-lg-12">
         <label for="cameraLocation">Camera location</label>
-        <input type="text" class="form-control" name="cameraLocation" [(ngModel)]="camera.location" #cameraLocation="ngModel" required minlength="3"/>
+        <input type="text" class="form-control" name="cameraLocation" [(ngModel)]="camera.location" #cameraLocation="ngModel" required minlength="7"/>
         <div *ngIf="cameraLocation.invalid && (cameraLocation.dirty || cameraLocation.touched)"
              class="alert alert-danger">
           <div *ngIf="cameraLocation.errors.required">
@@ -52,6 +52,54 @@
           </div>
           <div *ngIf="cameraLocation.errors.minlength">
             Camera location must be at least 7 characters long.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-lg-12">
+        <label for="cameraCompany">Camera company</label>
+        <input type="text" class="form-control" name="cameraCompany" [(ngModel)]="camera.company" #cameraCompany="ngModel" required minlength="5"/>
+        <div *ngIf="cameraCompany.invalid && (cameraCompany.dirty || cameraCompany.touched)"
+             class="alert alert-danger">
+          <div *ngIf="cameraCompany.errors.required">
+            Camera company is required.
+          </div>
+          <div *ngIf="cameraCompany.errors.minlength">
+            Camera company must be at least 5 characters long.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-lg-12">
+        <label for="cameraBuilding">Camera building</label>
+        <input type="text" class="form-control" name="cameraBuilding" [(ngModel)]="camera.building" #cameraBuilding="ngModel" required minlength="5"/>
+        <div *ngIf="cameraBuilding.invalid && (cameraBuilding.dirty || cameraBuilding.touched)"
+             class="alert alert-danger">
+          <div *ngIf="cameraBuilding.errors.required">
+            Camera building is required.
+          </div>
+          <div *ngIf="cameraBuilding.errors.minlength">
+            Camera building must be at least 5 characters long.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-lg-12">
+        <label for="cameraAngle">Camera location</label>
+        <input type="text" class="form-control" name="form-group" [(ngModel)]="camera.angle" #form-group="ngModel" required minlength="2"/>
+        <div *ngIf="form-group.invalid && (form-group.dirty || form-group.touched)"
+             class="alert alert-danger">
+          <div *ngIf="form-group.errors.required">
+            Camera angle is required.
+          </div>
+          <div *ngIf="form-group.errors.minlength">
+            Camera angle must be at least 2 ditis long.
           </div>
         </div>
       </div>
