@@ -18,6 +18,9 @@ export class CameraDetailsComponent implements OnInit, OnDestroy {
     '_id': '1111',
     'cameraName': 'Loading',
     'location': 'Loading',
+    'company': 'Loading',
+    'building': 'Loading',
+    'angle': 0,
     'user': 'Loading',
     'alarm': []
   };

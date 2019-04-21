@@ -16,9 +16,12 @@ export class CameraCreateComponent implements OnInit {
   user: User;
   camera: Camera = {
     '_id': '1111',
-    'cameraName': 'Camera name',
-    'location': 'Location',
-    'user': 'User name',
+    'cameraName': 'Loading',
+    'location': 'Loading',
+    'company': 'Loading',
+    'building': 'Loading',
+    'angle': 0,
+    'user': 'Loading',
     'alarm': []
   };
   submitted: boolean;
