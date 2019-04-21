@@ -25,7 +25,10 @@ export class CamerasService {
     return this.http.post('https://alarmsysteem-server.herokuapp.com/camera/', {
       "username" : camera.user,
       "cameraName" : camera.cameraName,
-      "location" : camera.location
+      "location" : camera.location,
+      "company" : camera.company,
+      "building": camera.building,
+      "angle" : camera.angle
     })
       // .pipe(
       //   // catchError(this.handleError), // then handle the error
@@ -63,7 +66,10 @@ export class CamerasService {
       "userName" : "Jim",
       "cameraName" : oldCameraName,
       "newCameraName" : camera.cameraName,
-      "newLocation" : camera.location
+      "newLocation" : camera.location,
+      "newCompany" : camera.company,
+      "newBuilding": camera.building,
+      "newAngle" : camera.angle
     })
       // .pipe(
       //   tap(response => console.log(response.results)),
