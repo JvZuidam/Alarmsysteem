@@ -104,22 +104,17 @@
           #cameraName="ngModel"
           required
           minlength="1"
-          maxlength="2"
         />
 
-        <div *ngIf="cameraName.invalid && (cameraName.dirty || cameraName.touched)"
+        <div *ngIf="cameraBuilding.invalid && (cameraBuilding.dirty || cameraBuilding.touched)"
              class="alert alert-danger">
-          <div *ngIf="cameraName.errors.required">
+          <div *ngIf="cameraBuilding.errors.required">
             Camera building is required.
           </div>
-          <div *ngIf="cameraName.errors.minlength">
-            Camera building must be at least 1 characters long.
-          </div>
-          <div *ngIf="cameraName.errors.maxlength">
-            Camera building must be at max 2 characters long.
+          <div *ngIf="cameraBuilding.errors.minlength">
+            Camera building must be at least 1 character long.
           </div>
         </div>
-
       </div>
     </div>
 

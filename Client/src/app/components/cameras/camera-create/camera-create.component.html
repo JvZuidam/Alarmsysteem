@@ -76,14 +76,14 @@
     <div class="form-row">
       <div class="form-group col-lg-12">
         <label for="cameraBuilding">Camera building</label>
-        <input type="text" class="form-control" name="cameraBuilding" [(ngModel)]="camera.building" #cameraBuilding="ngModel" required minlength="5"/>
+        <input type="text" class="form-control" name="cameraBuilding" [(ngModel)]="camera.building" #cameraBuilding="ngModel" required minlength="1"/>
         <div *ngIf="cameraBuilding.invalid && (cameraBuilding.dirty || cameraBuilding.touched)"
              class="alert alert-danger">
           <div *ngIf="cameraBuilding.errors.required">
             Camera building is required.
           </div>
           <div *ngIf="cameraBuilding.errors.minlength">
-            Camera building must be at least 5 characters long.
+            Camera building must be at least 1 character long.
           </div>
         </div>
       </div>
