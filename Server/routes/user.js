@@ -4,7 +4,6 @@ const User = require("../src/user");
 const router = express.Router();
 const responseMessages = require("../responseMessages");
 const jwt = require('jsonwebtoken');
-const a = require("../jwt");
 
 router.use(bodyParser.json()); // support json encoded bodies
 router.use(bodyParser.urlencoded({extended: true}));
@@ -27,10 +26,10 @@ router.post("/login", (request, result) => {
         } else {
            const token = jwt.sign(
                 {
-                name: User.name,
-                email: User.email
+                name: docs.name,
+                email: docs.email
                 },
-                a.env.JWT_KEY,
+                "secret",
                 {
                     expiresIn: "1h"
                 }
