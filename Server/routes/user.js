@@ -18,8 +18,8 @@ router.use(function (req, res, next) {
 
 //Login
 router.post("/login", (request, result) => {
-    const userName = request.params.name;
-    const password = request.params.password;
+    const userName = request.body.name;
+    const password = request.body.password;
 
     User.findOne({name: userName, password: password}, function (err, docs) {
         if (err || docs === null) {
