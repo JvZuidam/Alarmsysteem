@@ -8,6 +8,14 @@ function ErrorCode401(result) {
     });
 }
 
+function ErrorCode401Auth(result) {
+    result.status(401).json({
+        code: 401,
+        message: "Authentication failed",
+        datetime: moment().format()
+    });
+}
+
 function ErrorCode404(result) {
     result.status(404).json({
         code: 404,
@@ -69,6 +77,15 @@ function SuccessCode200GetAll(result, docs) {
     });
 }
 
+function SuccessCode200Auth(result, token, docs) {
+    result.status(200).json({
+        code: 200,
+        results: docs,
+        token: token,
+        datetime: moment().format()
+    });
+}
+
 function SuccessCode200UpdateCamera(result, cameraName, location) {
     result.status(200).json({
         code: 200,
@@ -115,6 +132,7 @@ function SuccessCode204(result) {
 
 module.exports = {
     ErrorCode401,
+    ErrorCode401Auth,
     ErrorCode404,
     ErrorCode409DuplicateUser,
     ErrorCode409DuplicateCamera,
@@ -124,6 +142,7 @@ module.exports = {
     SuccessCode200User,
     SuccessCode201Camera,
     SuccessCode200GetAll,
+    SuccessCode200Auth,
     SuccessCode200UpdateCamera,
     SuccessCode200UpdateAlarm,
     SuccessCode201User,

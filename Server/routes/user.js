@@ -3,6 +3,8 @@ const bodyParser = require("body-parser");
 const User = require("../src/user");
 const router = express.Router();
 const responseMessages = require("../responseMessages");
+const jwt = require('jsonwebtoken');
+const a = require("../jwt");
 
 router.use(bodyParser.json()); // support json encoded bodies
 router.use(bodyParser.urlencoded({extended: true}));
@@ -12,6 +14,30 @@ router.use(function (req, res, next) {
     res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
+});
+
+//Login
+router.post("/login", (request, result) => {
+    const email = request.params.email;
+    const password = request.params.password;
+
+    User.findOne({name: email, password: password}, function (err, docs) {
+        if (err || docs === null) {
+            responseMessages.ErrorCode401Auth(result);
+        } else {
+           const token = jwt.sign(
+                {
+                name: User.name,
+                email: User.email
+                },
+                a.env.JWT_KEY,
+                {
+                    expiresIn: "1h"
+                }
+                );
+            responseMessages.SuccessCode200Auth(result, token, docs);
+        }
+    })
 });
 
 //Create user
