@@ -18,10 +18,10 @@ router.use(function (req, res, next) {
 
 //Login
 router.post("/login", (request, result) => {
-    const email = request.params.email;
+    const userName = request.params.name;
     const password = request.params.password;
 
-    User.findOne({name: email, password: password}, function (err, docs) {
+    User.findOne({name: userName, password: password}, function (err, docs) {
         if (err || docs === null) {
             responseMessages.ErrorCode401Auth(result);
         } else {
