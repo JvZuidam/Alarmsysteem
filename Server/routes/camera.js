@@ -17,7 +17,7 @@ router.use(function (req, res, next) {
 });
 
 //Create camera
-router.post("", checkAuth,  (request, result) => {
+router.post("", checkAuth, (request, result) => {
     const userName = request.body.username;
     const cameraName = request.body.cameraName;
     const location = request.body.location;
