@@ -4,6 +4,7 @@ const router = express.Router();
 const Camera = require("../src/camera");
 const User = require("../src/user");
 const responseMessages = require("../responseMessages");
+const checkAuth = require("../middelware/check-auth");
 
 router.use(bodyParser.json()); // support json encoded bodies
 router.use(bodyParser.urlencoded({extended: true}));
@@ -16,13 +17,14 @@ router.use(function (req, res, next) {
 });
 
 //Create camera
-router.post("", (request, result) => {
+router.post("", checkAuth,  (request, result) => {
     const userName = request.body.username;
     const cameraName = request.body.cameraName;
     const location = request.body.location;
     const company = request.body.company;
     const building = request.body.building;
     const angle = request.body.angle;
+
 
     if (Object.keys(request.body).length === 0) {
         responseMessages.ErrorCode412(result);
