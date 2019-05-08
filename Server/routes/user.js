@@ -4,6 +4,7 @@ const User = require("../src/user");
 const router = express.Router();
 const responseMessages = require("../responseMessages");
 const jwt = require('jsonwebtoken');
+const checkAuth = require("../middelware/check-auth");
 
 router.use(bodyParser.json()); // support json encoded bodies
 router.use(bodyParser.urlencoded({extended: true}));
@@ -17,10 +18,10 @@ router.use(function (req, res, next) {
 
 //Login
 router.post("/login", (request, result) => {
-    const userName = request.body.name;
+    const email = request.body.email;
     const password = request.body.password;
 
-    User.findOne({name: userName, password: password}, function (err, docs) {
+    User.findOne({email: email, password: password}, function (err, docs) {
         if (err || docs === null) {
             responseMessages.ErrorCode401Auth(result);
         } else {
@@ -93,7 +94,7 @@ router.get("/:username", (request, result) => {
 });
 
 //Update a users
-router.put("", (request, result) => {
+router.put("", checkAuth, (request, result) => {
         const userName = request.body.username;
         const password = request.body.password;
         const newPassword = request.body.newPassword;
@@ -123,7 +124,7 @@ router.put("", (request, result) => {
 );
 
 //Delete a users
-router.delete("/:username/:password", (request, result) => {
+router.delete("/:username/:password", checkAuth, (request, result) => {
     const username = request.params.username;
     const password = request.params.password;
 

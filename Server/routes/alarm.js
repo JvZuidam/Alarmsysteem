@@ -4,6 +4,7 @@ const Camera = require("../src/camera");
 const User = require("../src/user");
 const router = express.Router();
 const responseMessages = require("../responseMessages");
+const checkAuth = require("../middelware/check-auth");
 
 router.use(bodyParser.json()); // support json encoded bodies
 router.use(bodyParser.urlencoded({extended: true}));
@@ -16,7 +17,7 @@ router.use(function (req, res, next) {
 });
 
 //Create alarm
-router.post("", (request, result) => {
+router.post("", checkAuth, (request, result) => {
     const userName = request.body.username;
     const cameraName = request.body.cameraName;
     const alarmName = request.body.alarmName;
@@ -55,7 +56,7 @@ router.post("", (request, result) => {
 
 });
 //Get all alarms
-router.get("/:userName/:cameraName", (request, result) => {
+router.get("/:userName/:cameraName", checkAuth, (request, result) => {
     const userName = request.params.userName;
     const cameraName = request.params.cameraName;
 
@@ -74,7 +75,7 @@ router.get("/:userName/:cameraName", (request, result) => {
     });
 });
 //Get an alarm
-router.get("/:userName/:cameraName/:alarmId", (request, result) => {
+router.get("/:userName/:cameraName/:alarmId", checkAuth, (request, result) => {
     const userName = request.params.userName;
     const cameraName = request.params.cameraName;
     const alarmId = request.params.alarmId;
@@ -102,7 +103,7 @@ router.get("/:userName/:cameraName/:alarmId", (request, result) => {
 
 });
 //Update an alarm
-router.put("", (request, result) => {
+router.put("", checkAuth, (request, result) => {
     const userName = request.body.userName;
     const cameraName = request.body.cameraName;
     const alarmId = request.body.alarmId;
@@ -155,7 +156,7 @@ router.put("", (request, result) => {
     }
 });
 //Delete an alarm
-router.delete("/:userName/:cameraName/:alarmId", (request, result) => {
+router.delete("/:userName/:cameraName/:alarmId", checkAuth, (request, result) => {
     const userName = request.params.userName;
     const cameraName = request.params.cameraName;
     const alarmId = request.params.alarmId;

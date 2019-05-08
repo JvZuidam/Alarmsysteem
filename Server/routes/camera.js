@@ -94,7 +94,7 @@ router.get("/:userName/:cameraName", (request, result) => {
 });
 
 //Update a camera
-router.put("", (request, result) => {
+router.put("", checkAuth, (request, result) => {
     const userName = request.body.username;
     const cameraName = request.body.cameraName;
     const location = request.body.location;
@@ -147,7 +147,7 @@ router.put("", (request, result) => {
 //TODO: Pass user to this request
 //TODO: Check is user exists
 //Delete a camera
-router.delete("/:userName/:cameraName", (request, result) => {
+router.delete("/:userName/:cameraName", checkAuth, (request, result) => {
     const userName = request.params.userName;
     const cameraName = request.params.cameraName;
 
