@@ -43,7 +43,7 @@ export class CameraCreateComponent implements OnInit {
     // Save user via the service
     // Then navigate back to display view (= UserDetails).
     // The display view must then show the new or edited user.
-      this.cameraService.createCamera(this.camera)
+      this.cameraService.createCamera(this.camera, this.user)
         .subscribe(
           (response) => {
             this.camera = response[0];

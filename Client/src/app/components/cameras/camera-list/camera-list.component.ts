@@ -2,6 +2,10 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs';
 import {CamerasService} from '../cameras.service';
 import {Camera} from '../camera.model';
+import {User} from '../../users/user.model';
+
+import { AuthenticationService } from '../../../auth/services';
+
 
 @Component({
 
@@ -14,12 +18,16 @@ export class CameraListComponent implements OnInit, OnDestroy {
   showEdit: boolean;
   title: "CameraListComponent";
   cameras: Camera[];
+  user: User;
   subscription: Subscription;
 
-  constructor(private cameraService: CamerasService) { }
+  constructor(
+    private cameraService: CamerasService,
+    private authenticationService: AuthenticationService) { }
 
   ngOnInit() {
-    this.subscription = this.cameraService.getCameras()
+    console.log(this.authenticationService.currentUserValue);
+    this.subscription = this.cameraService.getCameras(this.authenticationService.currentUserValue)
       .subscribe(
         (response) => {
          this.cameras = response;

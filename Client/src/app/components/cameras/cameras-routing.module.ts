@@ -5,6 +5,7 @@ import {CameraListComponent} from './camera-list/camera-list.component';
 import {CameraEditComponent} from './camera-edit/camera-edit.component';
 import {CameraDetailsComponent} from './camera-details/camera-details.component';
 import {CameraCreateComponent} from './camera-create/camera-create.component';
+import {AuthGuard} from '../../auth/guards/auth.guard';
 
 /*******************************************************
  * Copyright (C) 2018-2019 Jim van Zuidam 2127317
@@ -16,17 +17,17 @@ import {CameraCreateComponent} from './camera-create/camera-create.component';
  *******************************************************/
 
 const routes: Routes = [
-  { path: 'cameras/new', component: CameraCreateComponent},
-  { path: 'cameras/:id', component: CamerasComponent },
-  { path: 'cameras/:id/edit', component: CameraEditComponent },
-  { path: 'cameras', component: CamerasComponent },
+  { path: 'cameras/new', component: CameraCreateComponent, canActivate: [AuthGuard]},
+  { path: 'cameras/:id', component: CamerasComponent, canActivate: [AuthGuard] },
+  { path: 'cameras/:id/edit', component: CameraEditComponent, canActivate: [AuthGuard] },
+  { path: 'cameras', component: CamerasComponent, canActivate: [AuthGuard] },
 
-  { path: 'cameras/list', component: CameraListComponent },
-  { path: 'cameras/list/new', component: CameraEditComponent, data: {
+  { path: 'cameras/list', component: CameraListComponent, canActivate: [AuthGuard] },
+  { path: 'cameras/list/new', component: CameraEditComponent, canActivate: [AuthGuard], data: {
       userAlreadyExists : false,
       title: 'New Camera'
     } },
-  { path: 'cameras/list/:id', component: CameraDetailsComponent },
+  { path: 'cameras/list/:id', component: CameraDetailsComponent, canActivate: [AuthGuard] },
   { path: 'cameras/list/:id/edit', component: CameraEditComponent, data: { userAlreadyExists: true, title: 'Edit Camera' } },
 
 ];

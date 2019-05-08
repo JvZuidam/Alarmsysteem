@@ -8,12 +8,18 @@ import {map, tap} from 'rxjs/operators';
 })
 export class UsersService {
 
+  user: User[]
+
   constructor(
     private http: HttpClient) {
   }
 
-  public createUser() {
-
+  public createUser(user: User) {
+    return this.http.post('https://alarmsysteem-server.herokuapp.com/camera/', {
+      "name" : user.results.name,
+      "email" : user.results.email,
+      "password" : user.results.password
+    })
   }
 
   public getUsers() {

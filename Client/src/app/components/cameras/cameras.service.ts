@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient , HttpHeaders} from '@angular/common/http';
 // import 'rxjs-compat/add/operator/map';
 import {Camera} from './camera.model';
 import {catchError, map, tap} from 'rxjs/operators';
@@ -9,18 +9,29 @@ import {User} from '../users/user.model';
 @Injectable({
   providedIn: 'root'
 })
+
 export class CamerasService {
 
   cameras: Camera[];
+  user: User;
 
   cameraAvailable = new BehaviorSubject<boolean>(false);
 
   constructor(private http: HttpClient) {
 
   }
+
+
+
   //TODO: find a way to make user dynamic (Since it's now always Jim)
-  public createCamera(camera: Camera) {
-    console.log('createCamera');
+  public createCamera(camera: Camera, user: User) {
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': user.results.token
+      })};
+
     console.log(camera);
     return this.http.post('https://alarmsysteem-server.herokuapp.com/camera/', {
       "username" : camera.user,
@@ -29,7 +40,7 @@ export class CamerasService {
       "company" : camera.company,
       "building": camera.building,
       "angle" : camera.angle
-    })
+    }, httpOptions)
       // .pipe(
       //   // catchError(this.handleError), // then handle the error
       //   tap( // Log the result or error
@@ -40,16 +51,16 @@ export class CamerasService {
       // );
   }
 
-  public getCameras() {
+  public getCameras(user: User) {
     console.log('getCameras');
-    return this.http.get<any>('https://alarmsysteem-server.herokuapp.com/camera/Jim')
+    return this.http.get<any>('https://alarmsysteem-server.herokuapp.com/camera/' + user.results.name)
       .pipe(
       tap(response => console.log(response.results)),
       map(response => response.results.map(data => new Camera(data)))
       );
   }
 
-  public getCamera(cameraName: string) {
+  public getCamera(cameraName: string ) {
     console.log('getCamera');
     return this.http.get<any>('https://alarmsysteem-server.herokuapp.com/camera/Jim/' + cameraName)
       .pipe(
