@@ -69,7 +69,13 @@ export class CamerasService {
       );
   }
 
-  public updateCamera(camera: Camera, oldCameraName: string) {
+  public updateCamera(camera: Camera, oldCameraName: string, user: User) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': user.results.token
+      })};
+
     console.log(camera);
     console.log(oldCameraName);
     console.log('updateCamera');
@@ -81,14 +87,20 @@ export class CamerasService {
       "newCompany" : camera.company,
       "newBuilding": camera.building,
       "newAngle" : camera.angle
-    })
+    }, httpOptions)
       // .pipe(
       //   tap(response => console.log(response.results)),
       //   map(response => response.results.map(data => new Camera(data)))
       // );
   }
 
-  public deleteCamera(cameraName: string) {
-    return this.http.delete('https://alarmsysteem-server.herokuapp.com/camera/Jim/' + cameraName)
+  public deleteCamera(cameraName: string, user: User) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': user.results.token
+      })};
+
+    return this.http.delete('https://alarmsysteem-server.herokuapp.com/camera/Jim/' + cameraName, httpOptions)
   }
 }

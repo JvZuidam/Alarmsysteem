@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {CamerasService} from '../cameras.service';
 import {filter, map, switchMap, tap} from 'rxjs/operators';
 import {Subscription} from 'rxjs';
+import {AuthenticationService} from '../../../auth/services';
 
 @Component({
   selector: 'app-camera-details',
@@ -31,7 +32,8 @@ export class CameraDetailsComponent implements OnInit, OnDestroy {
   constructor(
     private route: ActivatedRoute,
     private cameraService: CamerasService,
-  private router: Router
+  private router: Router,
+    private authenticationService: AuthenticationService
   ) { }
 
   ngOnInit() {
@@ -60,7 +62,7 @@ export class CameraDetailsComponent implements OnInit, OnDestroy {
 
   OnDelete() {
     console.log(this.cameraName);
-    this.cameraService.deleteCamera(this.cameraName)
+    this.cameraService.deleteCamera(this.cameraName, this.authenticationService.currentUserValue)
       .subscribe(
         (response) => {
           this.router.navigateByUrl( '/dashboard', {skipLocationChange: true}).then(() =>

@@ -3,6 +3,7 @@ import {Camera} from '../camera.model';
 import {CamerasService} from '../cameras.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Subscription} from 'rxjs';
+import {AuthenticationService} from '../../../auth/services';
 
 @Component({
   selector: 'app-camera-edit',
@@ -21,7 +22,8 @@ export class CameraEditComponent implements OnInit, OnDestroy {
   constructor(
     private cameraService: CamerasService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private authenticationService: AuthenticationService
   ) {
   }
 
@@ -50,7 +52,7 @@ export class CameraEditComponent implements OnInit, OnDestroy {
 
     console.dir(this.camera);
     if(this.camera.cameraName) {
-      this.cameraService.updateCamera(this.camera, this.cameraName)
+      this.cameraService.updateCamera(this.camera, this.cameraName, this.authenticationService.currentUserValue)
         .subscribe(
           (response) => {
             this.camera = response[0];
