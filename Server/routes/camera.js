@@ -62,7 +62,7 @@ router.get("/:userName", (request, result) => {
         if (err || docs === null) {
             responseMessages.ErrorCode412(result);
         } else {
-            Camera.find({}, function (err, docs) {
+            Camera.find({user: userName}, function (err, docs) {
                 if (err || docs === null) {
                     responseMessages.ErrorCode412(result);
                 } else {
